@@ -1,7 +1,7 @@
 {
     "name": "multi-ai-wrapper",
-    "version": "1.0.0",
-    "description": "A unified interface for multiple AI providers (OpenAI, Anthropic, Google Gemini) with fallback, cost tracking, and more.",
+    "version": "1.0.1",
+    "description": "The ultimate Node.js wrapper for OpenAI, Anthropic (Claude), and Google Gemini. Features unified API, automatic provider fallback, real-time cost tracking, and streaming support. The best multi-LLM SDK for reliable AI apps.",
     "main": "src/index.js",
     "scripts": {
         "test": "node tests/index.test.js"
@@ -18,7 +18,18 @@
         "gemini",
         "llm",
         "unified-api",
-        "multi-provider"
+        "multi-provider",
+        "javascript-ai",
+        "nodejs-llm",
+        "ai-gateway",
+        "provider-fallback",
+        "cost-tracking",
+        "ai-sdk",
+        "generative-ai",
+        "chatgpt-api",
+        "claude-api",
+        "gemini-api",
+        "universal-llm"
     ],
     "author": "Mehulbirare",
     "license": "MIT",

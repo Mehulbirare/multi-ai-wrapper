@@ -1,128 +1,131 @@
-# Multi-AI Provider Wrapper
+# 🤖 Multi-AI Wrapper
 
-A unified interface that lets developers use multiple AI providers (OpenAI, Anthropic, Google Gemini) through one simple API. Write once, run everywhere.
+[![npm version](https://img.shields.io/npm/v/multi-ai-wrapper.svg?style=flat-square)](https://www.npmjs.com/package/multi-ai-wrapper)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![OpenAI](https://img.shields.io/badge/OpenAI-Enabled-green.svg?style=flat-square)](https://platform.openai.com)
+[![Anthropic](https://img.shields.io/badge/Anthropic-Enabled-orange.svg?style=flat-square)](https://www.anthropic.com)
+[![Google Gemini](https://img.shields.io/badge/Gemini-Enabled-blue.svg?style=flat-square)](https://ai.google.dev)
 
-**GitHub Repository**: [https://github.com/Mehulbirare/multi-ai-wrapper](https://github.com/Mehulbirare/multi-ai-wrapper)
+**The Universal API for Generative AI.**
 
-## Features
+Use OpenAI (GPT-4), Anthropic (Claude 3.5), and Google Gemini through a **single, unified interface**. Never worry about API downtime again with built-in **automatic fallbacks**. Monitor every penny with **real-time cost tracking**.
 
-- **Unified API**: Single interface for all providers.
-- **Automatic Fallback**: Seamlessly switches to backup providers if one fails.
-- **Cost Tracking**: Monitor spending across all providers in real-time.
-- **Streaming Support**: Unified streaming interface.
-- **Smart model aliases**: Use 'smart', 'fast', 'cheap' aliases.
+> **Build reliable, cost-effective AI applications in minutes, not days.**
 
-## Installation
+🌟 **GitHub Repository**: [https://github.com/Mehulbirare/multi-ai-wrapper](https://github.com/Mehulbirare/multi-ai-wrapper)
+
+---
+
+## ⚡ Why Use Multi-AI Wrapper?
+
+Developers choose `multi-ai-wrapper` over LangChain or official SDKs because it solves the biggest problems in AI integration:
+
+| Feature | `multi-ai-wrapper` | Official SDKs | LangChain |
+| :--- | :---: | :---: | :---: |
+| **Unified API** | ✅ Yes | ❌ No | ✅ Yes |
+| **Automatic Fallback** | ✅ **Built-in** | ❌ Manual | ⚠️ Complex |
+| **Cost Tracking** | ✅ **Real-time (USD)** | ❌ No | ❌ Difficult |
+| **Lightweight** | ✅ **Extremely** | ✅ Yes | ❌ Heavy |
+| **Streaming** | ✅ **Unified Stream** | ⚠️ Varies | ✅ Yes |
+
+### Key Benefits
+
+1.  **Zero Downtime (High Availability)**: If OpenAI is down, your app automatically switches to Anthropic or Gemini. Your users never see an error.
+2.  **Cost Optimization**: Track spending per provider and model. Switch to cheaper models instantly with aliases like `"cheap"` or `"smart"`.
+3.  **No Vendor Lock-in**: Write your code once. Switch providers by changing one line of configuration.
+4.  **Developer Experience**: Simple, intuitive API that just works. No complex abstractions or boilerplate.
+
+---
+
+## 📦 Installation
 
 ```bash
 npm install multi-ai-wrapper
 ```
 
-## 🚀 Next Steps: Getting Started
+## 🚀 Quick Start
 
-Once you've installed the package, follow these steps to integrate it into your project:
+### 1. Initialize
 
-1.  **Get Your API Keys**:
-    You'll need API keys for the providers you want to use:
-    - [OpenAI API Key](https://platform.openai.com/api-keys)
-    - [Anthropic API Key](https://console.anthropic.com/)
-    - [Google AI Studio Key](https://aistudio.google.com/app/apikey)
-
-2.  **Set Up Your Environment (Recommended)**:
-    Store your keys securely. We recommend usng `dotenv`.
-    
-    Create a `.env` file:
-    ```env
-    OPENAI_API_KEY=sk-...
-    ANTHROPIC_API_KEY=sk-...
-    GEMINI_API_KEY=...
-    ```
-
-3.  **Initialize the Wrapper**:
-    Create a new file (e.g., `ai-service.js`) and initialize the client:
-
-    ```javascript
-    require('dotenv').config(); // If using .env
-    const AI = require('multi-ai-wrapper');
-
-    const ai = new AI({
-      providers: [
-        { name: 'openai', apiKey: process.env.OPENAI_API_KEY, priority: 1 },
-        { name: 'anthropic', apiKey: process.env.ANTHROPIC_API_KEY, priority: 2 }
-      ]
-    });
-    
-    module.exports = ai;
-    ```
-
-4.  **Start Chatting!**:
-    Import your configured instance and start making requests using the unified API.
-
-## Usage
-
-### Basic Example
+Create a single instance for your entire app.
 
 ```javascript
 const AI = require('multi-ai-wrapper');
 
 const ai = new AI({
   providers: [
-    { name: 'openai', apiKey: 'sk-...', priority: 1 },
-    { name: 'anthropic', apiKey: 'sk-...', priority: 2 }
+    { name: 'openai', apiKey: process.env.OPENAI_API_KEY, priority: 1 },    // Primary
+    { name: 'anthropic', apiKey: process.env.ANTHROPIC_API_KEY, priority: 2 } // Backup
   ]
 });
-
-async function main() {
-  const response = await ai.chat({
-    message: "Write a haiku about coding",
-    model: "smart", // Maps to gpt-4o or claude-3-5-sonnet
-    temperature: 0.7
-  });
-
-  console.log(response.text);
-  console.log(`Provider used: ${response.provider}`);
-  console.log(`Cost: $${response.cost}`);
-}
-
-main();
 ```
 
-### Streaming
+### 2. Chat (Unified API)
+
+```javascript
+const response = await ai.chat({
+  message: "Explain quantum computing to a 5-year-old",
+  model: "smart", // Automatically uses GPT-4o or Claude 3.5 Sonnet
+  temperature: 0.7
+});
+
+console.log(response.text);
+console.log(`Provider used: ${response.provider}`); // e.g., "openai"
+console.log(`Cost: $${response.cost}`); // e.g., "$0.0024"
+```
+
+### 3. Stream (Real-time)
 
 ```javascript
 const stream = await ai.chatStream({
-  message: "Write a long story",
-  model: "fast"
+  message: "Write a futuristic story...",
+  model: "fast" // Automatically uses GPT-4o-mini or Gemini Flash
 });
 
 for await (const chunk of stream) {
   process.stdout.write(chunk.text);
-  console.log(` (Cost: $${chunk.costSoFar})`);
 }
 ```
 
-### Advanced Configuration
+---
+
+## 🔧 Advanced Features
+
+### Smart Model Aliases
+
+Don't memorize model names. Use aliases that map to the best option for each provider:
+
+-   `"smart"`: Best capability (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro)
+-   `"fast"`: Low latency (GPT-4o-mini, Claude Haiku, Gemini Flash)
+-   `"cheap"`: Lowest cost (GPT-4o-mini, Gemini Flash)
+
+### Detailed Cost Analytics
 
 ```javascript
-const ai = new AI({
-  providers: [
-    { name: 'openai', apiKey: '...', priority: 1 },
-    { name: 'gemini', apiKey: '...', priority: 2 }
-  ],
-  // Global options can be added here in future
-});
-
-// Get total stats
 const stats = ai.getCostStats();
 console.log(stats);
+/*
+{
+  totalCost: 0.145,
+  requestCount: 52,
+  byProvider: {
+    openai: { cost: 0.120, requests: 40 },
+    anthropic: { cost: 0.025, requests: 12 }
+  }
+}
+*/
 ```
 
-## Supported Providers & Models
+---
 
-- **OpenAI**: gpt-4o, gpt-4-turbo, gpt-3.5-turbo
-- **Anthropic**: claude-3-5-sonnet, claude-3-opus, claude-3-haiku
-- **Google Gemini**: gemini-1.5-pro, gemini-1.5-flash
+## 📚 Documentation
 
-## License
+For a deep dive into architecture and advanced configuration, see the [Detailed Explanation & Guide](docs/DETAILED_EXPLANATION.md).
 
-MIT
+## 🤝 Contributing
+
+We welcome contributions! Whether it's adding a new provider (Mistral, Cohere, etc.) or fixing a bug, please check out our repository.
+
+## 📄 License
+
+MIT © [Mehulbirare](https://github.com/Mehulbirare)
