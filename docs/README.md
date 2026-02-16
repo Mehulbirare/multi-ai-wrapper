@@ -14,8 +14,6 @@ Use OpenAI (GPT-4), Anthropic (Claude 3.5), and Google Gemini through a **single
 
 🌟 **GitHub Repository**: [https://github.com/Mehulbirare/multi-ai-wrapper](https://github.com/Mehulbirare/multi-ai-wrapper)
 
-📚 **Live Documentation**: [https://mehulbirare.github.io/multi-ai-wrapper](https://mehulbirare.github.io/multi-ai-wrapper)
-
 ---
 
 ## ⚡ Why Use Multi-AI Wrapper?
@@ -122,26 +120,11 @@ console.log(stats);
 
 ## 📚 Documentation
 
-**🌐 [Live Documentation Site](https://mehulbirare.github.io/multi-ai-wrapper)**
-
-For a deep dive into architecture and advanced configuration:
-- [API Reference](docs/API.md) - Complete API documentation
-- [Detailed Explanation & Guide](docs/DETAILED_EXPLANATION.md) - Architecture and integration guide
-- [SEO & Promotion](docs/SEO_AND_PROMOTION.md) - Marketing and visibility strategies
-
-### Running Docs Locally
-
-To view the documentation site locally:
-
-```bash
-npm run docs:serve
-```
-
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+For a deep dive into architecture and advanced configuration, see the [Detailed Explanation & Guide](DETAILED_EXPLANATION.md).
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether it's adding a new provider (Mistral, Cohere, etc.) or fixing a bug, please check out our repository.
+We welcome contributions! Whether it's adding a new provider (Mistral, Cohere, etc.) or fixing a bug, please check our [Contributing Guide](../CONTRIBUTING.md).
 
 ## 📄 License
 
