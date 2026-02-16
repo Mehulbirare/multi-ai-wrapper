@@ -4,7 +4,9 @@
     "description": "The ultimate Node.js wrapper for OpenAI, Anthropic (Claude), and Google Gemini. Features unified API, automatic provider fallback, real-time cost tracking, and streaming support. The best multi-LLM SDK for reliable AI apps.",
     "main": "src/index.js",
     "scripts": {
-        "test": "node tests/index.test.js"
+        "test": "node tests/index.test.js",
+        "docs:serve": "npx docsify-cli serve docs",
+        "docs:dev": "npx docsify-cli serve docs"
     },
     "repository": {
         "type": "git",
@@ -40,6 +42,7 @@
         "axios": "^1.6.0"
     },
     "devDependencies": {
-        "jest": "^29.7.0"
+        "jest": "^29.7.0",
+        "docsify-cli": "^4.4.4"
     }
 }
