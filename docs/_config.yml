@@ -1,0 +1,18 @@
+# GitHub Pages configuration for Multi-AI Wrapper Documentation
+title: Multi-AI Wrapper Documentation
+description: Universal API for Generative AI - Use OpenAI, Anthropic, and Google Gemini through a single, unified interface
+theme: jekyll-theme-cayman
+markdown: kramdown
+
+# Repository information
+repository: Mehulbirare/multi-ai-wrapper
+url: https://mehulbirare.github.io
+baseurl: /multi-ai-wrapper
+
+# Social links
+github_username: Mehulbirare
+
+# Build settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
