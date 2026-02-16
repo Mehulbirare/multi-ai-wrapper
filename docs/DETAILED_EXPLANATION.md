@@ -119,36 +119,4 @@ const stats = aiService.getCostStats();
 console.log('Total Spend:', stats.totalCost);
 console.log('Spend by Provider:', stats.byProvider);
 ```
-
----
-
-## 📦 Publishing Your Wrapper (Optional)
-
-If you want to share your customized version of this wrapper or publish the package to NPM yourself:
-
-1.  **Login to NPM**:
-    ```bash
-    npm login
-    ```
-2.  **Verify Package Details**:
-    Ensure `package.json` has a unique `name` and correct `version`.
-3.  **Publish**:
-    ```bash
-    npm publish --access public
-    ```
-    *(Note: You'll need to remove `private: true` from package.json if it exists)*
-
----
-
-## 🛠️ Extending the Package
-
-Users often need to add more providers (e.g., Mistral, Cohere, or local LLMs via Ollama).
-
-1.  **Create a New Adapter**:
-    Copy `src/providers/openai.js` and rename it (e.g., `ollama.js`).
-2.  **Implement Methods**:
-    Implement `chat()` and `chatStream()` using the new provider's SDK or API.
-3.  **Register Provider**:
-    Import the new class in `src/core/router.js` and add it to the `PROVIDER_MAP`.
-4.  **Add Pricing**:
-    Add the model pricing to the `PRICING` constant in your new adapter file.
+    
