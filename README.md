@@ -2,6 +2,8 @@
 
 A unified interface that lets developers use multiple AI providers (OpenAI, Anthropic, Google Gemini) through one simple API. Write once, run everywhere.
 
+**GitHub Repository**: [https://github.com/Mehulbirare/multi-ai-wrapper](https://github.com/Mehulbirare/multi-ai-wrapper)
+
 ## Features
 
 - **Unified API**: Single interface for all providers.

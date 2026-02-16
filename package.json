@@ -6,6 +6,10 @@
     "scripts": {
         "test": "node tests/index.test.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Mehulbirare/multi-ai-wrapper.git"
+    },
     "keywords": [
         "ai",
         "wrapper",
