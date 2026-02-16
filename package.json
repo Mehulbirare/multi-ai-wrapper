@@ -5,8 +5,7 @@
     "main": "src/index.js",
     "scripts": {
         "test": "node tests/index.test.js",
-        "docs:serve": "npx docsify-cli serve docs",
-        "docs:dev": "npx docsify-cli serve docs"
+        "docs:serve": "npx docsify-cli serve docs"
     },
     "repository": {
         "type": "git",
