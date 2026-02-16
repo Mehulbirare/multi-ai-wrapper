@@ -1,0 +1,30 @@
+{
+    "name": "multi-ai-wrapper",
+    "version": "1.0.0",
+    "description": "A unified interface for multiple AI providers (OpenAI, Anthropic, Google Gemini) with fallback, cost tracking, and more.",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "node tests/index.test.js"
+    },
+    "keywords": [
+        "ai",
+        "wrapper",
+        "openai",
+        "anthropic",
+        "gemini",
+        "llm",
+        "unified-api",
+        "multi-provider"
+    ],
+    "author": "Mehulbirare",
+    "license": "MIT",
+    "dependencies": {
+        "openai": "^4.28.0",
+        "@anthropic-ai/sdk": "^0.18.0",
+        "@google/generative-ai": "^0.2.1",
+        "axios": "^1.6.0"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}

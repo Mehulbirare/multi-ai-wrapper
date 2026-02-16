@@ -1,0 +1,8 @@
+tests/
+.env
+example/
+.DS_Store
+*.log
+node_modules/
+.git/
+tsc/
