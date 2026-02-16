@@ -8,15 +8,51 @@ The 404 error when publishing the docs folder was caused by the absence of an `i
 
 ### Changes Made:
 
-1. **Created `docs/index.md`**: This is the main landing page for the documentation site
+1. **Created `docs/index.md`**: Markdown version of the main landing page for the documentation site
    - Provides an overview of the Multi-AI Wrapper
    - Links to all documentation pages (API.md, DETAILED_EXPLANATION.md, SEO_AND_PROMOTION.md)
    - Includes a quick start guide
+   - Uses Jekyll theming via `_config.yml`
 
-2. **Created `docs/_config.yml`**: Jekyll configuration for GitHub Pages
+2. **Created `docs/index.html`**: HTML version of the main landing page
+   - Standalone HTML file with embedded CSS styling
+   - Modern, responsive design with gradient backgrounds
+   - Works independently without Jekyll processing
+   - Includes all the same content as index.md but with custom styling
+
+3. **Created `docs/_config.yml`**: Jekyll configuration for GitHub Pages
    - Sets the theme (Cayman theme)
    - Configures site metadata (title, description)
    - Sets up proper URL structure
+
+## Using HTML vs Markdown
+
+You can use either `index.html` or `index.md` as your landing page:
+
+### HTML Version (`index.html`)
+- **Pros:**
+  - Complete control over styling and layout
+  - Modern, custom design with gradients and animations
+  - No dependency on Jekyll themes
+  - Faster loading (no Jekyll processing needed)
+  - Works immediately without build step
+
+- **Cons:**
+  - Harder to maintain (inline styles)
+  - No automatic theming from GitHub Pages
+
+### Markdown Version (`index.md`)
+- **Pros:**
+  - Easy to edit and maintain
+  - Automatic theming from Jekyll
+  - Consistent with other documentation pages
+  - GitHub-style rendering
+
+- **Cons:**
+  - Limited styling options
+  - Depends on Jekyll theme
+
+**Note:** GitHub Pages will serve `index.html` if it exists. To use the Markdown version, rename or remove `index.html`.
 
 ## How to Enable GitHub Pages
 
