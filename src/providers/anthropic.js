@@ -86,12 +86,16 @@ class AnthropicProvider extends AIProvider {
     }
 
     calculateCost(usage, modelName) {
-        const pricingKey = Object.keys(PRICING).find(key => modelName.includes(key));
+        // Match the most specific (longest) pricing key, e.g. prefer
+        // 'claude-3-5-sonnet' over 'claude-3-sonnet'.
+        const pricingKey = Object.keys(PRICING)
+            .filter((key) => modelName.includes(key))
+            .sort((a, b) => b.length - a.length)[0];
         const pricing = PRICING[pricingKey];
         if (!pricing) return 0;
 
-        const inputCost = (usage.input_tokens / 1000000) * pricing.input;
-        const outputCost = (usage.output_tokens / 1000000) * pricing.output;
+        const inputCost = ((usage.input_tokens || 0) / 1000000) * pricing.input;
+        const outputCost = ((usage.output_tokens || 0) / 1000000) * pricing.output;
         return inputCost + outputCost;
     }
 }

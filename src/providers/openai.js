@@ -85,12 +85,16 @@ class OpenAIProvider extends AIProvider {
     }
 
     calculateCost(usage, modelName) {
-        // Simple logic to match model prefix
-        const pricing = Object.entries(PRICING).find(([key]) => modelName.includes(key))?.[1];
+        // Match the most specific (longest) pricing key so 'gpt-4o' is not
+        // mistakenly matched against the shorter 'gpt-4' substring.
+        const pricingKey = Object.keys(PRICING)
+            .filter((key) => modelName.includes(key))
+            .sort((a, b) => b.length - a.length)[0];
+        const pricing = PRICING[pricingKey];
         if (!pricing) return 0;
 
-        const inputCost = (usage.prompt_tokens / 1000) * pricing.input;
-        const outputCost = (usage.completion_tokens / 1000) * pricing.output;
+        const inputCost = ((usage.prompt_tokens || 0) / 1000) * pricing.input;
+        const outputCost = ((usage.completion_tokens || 0) / 1000) * pricing.output;
         return inputCost + outputCost;
     }
 }

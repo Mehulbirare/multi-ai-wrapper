@@ -1,10 +1,10 @@
 {
     "name": "multi-ai-wrapper",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "The ultimate Node.js wrapper for OpenAI, Anthropic (Claude), and Google Gemini. Features unified API, automatic provider fallback, real-time cost tracking, and streaming support. The best multi-LLM SDK for reliable AI apps.",
     "main": "src/index.js",
     "scripts": {
-        "test": "node tests/index.test.js"
+        "test": "jest"
     },
     "repository": {
         "type": "git",

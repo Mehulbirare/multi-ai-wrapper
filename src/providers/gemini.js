@@ -147,7 +147,11 @@ class GeminiProvider extends AIProvider {
     }
 
     calculateCost(usage, modelName) {
-        const pricingKey = Object.keys(PRICING).find(key => modelName.includes(key));
+        // Match the most specific (longest) pricing key to avoid shorter
+        // substrings (e.g. 'gemini-pro') shadowing more specific models.
+        const pricingKey = Object.keys(PRICING)
+            .filter((key) => modelName.includes(key))
+            .sort((a, b) => b.length - a.length)[0];
         const pricing = PRICING[pricingKey];
         if (!pricing) return 0;
 

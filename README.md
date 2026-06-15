@@ -16,6 +16,15 @@ Use OpenAI (GPT-4), Anthropic (Claude 3.5), and Google Gemini through a **single
 
 ---
 
+## 🆕 What's New in v1.0.2
+
+- **Fixed cost calculation accuracy** — model pricing now matches the most specific model name, so `gpt-4o` / `gpt-4o-mini` / `gpt-4-turbo` are no longer mispriced as `gpt-4` (previously this overestimated `gpt-4o` cost by ~6×). The same robust matching now applies to the Anthropic and Gemini providers.
+- **Hardened cost math** — guards against missing token counts so a partial usage payload can never produce `NaN`.
+- **Fixed the test script** — `npm test` now runs Jest correctly (it previously failed because Jest specs were executed with plain `node`).
+- **Added `.gitignore`** — keeps `node_modules/`, `.env`, and local tooling out of version control.
+
+---
+
 ## ⚡ Why Use Multi-AI Wrapper?
 
 Developers choose `multi-ai-wrapper` over LangChain or official SDKs because it solves the biggest problems in AI integration:
@@ -31,7 +40,7 @@ Developers choose `multi-ai-wrapper` over LangChain or official SDKs because it 
 ### Key Benefits
 
 1.  **Zero Downtime (High Availability)**: If OpenAI is down, your app automatically switches to Anthropic or Gemini. Your users never see an error.
-2.  **Cost Optimization**: Track spending per provider and model. Switch to cheaper models instantly with aliases like `"cheap"` or `"smart"`.
+2.  **Accurate Cost Optimization**: Track spending per provider and model with correct per-model pricing (GPT-4o, GPT-4o-mini, Claude 3.5, Gemini, etc. are each priced individually). Switch to cheaper models instantly with aliases like `"cheap"` or `"smart"`.
 3.  **No Vendor Lock-in**: Write your code once. Switch providers by changing one line of configuration.
 4.  **Developer Experience**: Simple, intuitive API that just works. No complex abstractions or boilerplate.
 
@@ -107,7 +116,7 @@ console.log(stats);
 /*
 {
   totalCost: 0.145,
-  requestCount: 52,
+  totalRequests: 52,
   byProvider: {
     openai: { cost: 0.120, requests: 40 },
     anthropic: { cost: 0.025, requests: 12 }
